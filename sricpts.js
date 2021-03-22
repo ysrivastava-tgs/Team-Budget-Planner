@@ -53,14 +53,13 @@ function remCookie(rem,add,service){
     r.style.visibility = "hidden";
     var a = document.getElementById(add);
     a.style.visibility = "visible";
-    var s = service;
-    for(var i=0;i<localStorage.length;i++)
+    
+    for(const y in localStorage)
     {
-        var item = localStorage.getItem("service"+(i));
+        var item = localStorage.getItem(y);
         if(item==service)
-        {
-             localStorage.removeItem("service"+(i));
-            console.log(true);
+        {   console.log(item +" "+service);
+            localStorage.removeItem(y);
             var t = sessionStorage.getItem("index");
             t-=1;
             sessionStorage.setItem("index",t);
