@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Budget Palnner</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" 
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" 
+  integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
+  integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+  <style>
+      .main{
+          max-width: 1080px;
+          margin: auto;
+          margin-top: 50px;
+          height: 800px;
+      }
+  </style>
+   <script>
+   function fun(){
+    var ref = document.getElementById("tbody");
+    //console.log(localStorage);
+    var i;
+    var total = 0;
+    console.log(localStorage.length);
+    var j=0;
+    var k = localStorage.length;
+    var len = sessionStorage['index'];
+    for(i in localStorage)
+    {
+      if(j==k)
+      break;
+      var ite = localStorage[i];
+      console.log(ite);
+     var it = ite.split("+");
+     total+=parseInt(it[1]);
+      console.log(it);
+      var table = document.getElementById("table");
+      var row = table.insertRow(j+1);
+      
+      var cell2 = row.insertCell(0);
+      var cell3  =row.insertCell(1);
+      
+      cell2.innerHTML = it[0];
+      cell3.innerHTML = it[1];
+      j+=1;
+     
+       }
+var t = document.getElementById("table");
+var r = t.insertRow(j+1);
+var c1 = r.insertCell(0);
+var c2 = r.insertCell(1);
+r.colSpan = "2";
+c1.innerHTML = "Total";
+c2.innerHTML = "Rs "+total;
+}
+function fun2(){
+  sessionStorage.clear();
+  localStorage.clear();
+}
+   
+</script>
+  </head>
+<body onload="fun()" onabort="fun2()">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <a class="navbar-brand" href="#"><i class="fas fa-utensils"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse navbar-height-nav inline" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto">
+              
+              <li  class="nav-item">
+                <a class="nav-link" href="./cart.html">Checkout Budget<i class="fas fa-cart-plus"></i></a>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </nav>
+      <section>
+        <div class="shadow p-3 mb-5 bg-white rounded main" id="main">
+            <table class="table" id="table">
+                <thead>
+                  <tr>
+                    
+                    <th scope="col">Services Acquired</th>
+                    <th scope="col">Price</th>
+                    
+                  </tr>
+                </thead>
+                <tbody id="tb">
+                    
+                   
+              
+             </tbody>
+                  
+                 
+            </table>
+           
+         
+        </div>
+
+      </section>
+      
+</body>
+</html>
